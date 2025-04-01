@@ -15,6 +15,25 @@ pub fn foo_if_fizz(fizzish: &str) -> &str {
         "baz"
     }
 }
+pub fn bar_for_fuzz(fizzish: &str) -> &str {
+    if fizzish == "fizz" {
+        "foo"
+    } else if fizzish == "fuzz" {
+        "bar"
+    } else {
+        "baz"
+    }
+}
+pub fn default_to_baz(fizzish: &str) -> &str {
+    if fizzish == "fizz" {
+        "foo"
+    } else if fizzish == "fuzz" {
+        "bar"
+    } else {
+        "baz"
+    }
+}
+
 
 // No test changes needed!
 #[cfg(test)]
