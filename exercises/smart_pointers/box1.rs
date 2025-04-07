@@ -18,11 +18,22 @@
 //
 // Execute `rustlings hint box1` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
 
+
+// 递归类型的问题：
+
+// Rust 在编译时需要知道每个类型的大小（size）。
+// 对于递归类型（如 List），因为它包含自身的实例，编译器无法确定它的大小。
+// 解决方法是使用 Box，它是一个智能指针，存储在堆上，大小是固定的（指针大小）。
+// Cons List：
+
+// Cons List 是一种常见的递归数据结构，常用于函数式编程语言。
+// 它由两部分组成：
+// 当前节点的值。
+// 指向下一个节点的指针（或表示结束的 Nil）。
 #[derive(PartialEq, Debug)]
 pub enum List {
-    Cons(i32, List),
+    Cons(i32, Box<List>),
     Nil,
 }
 
@@ -35,11 +46,11 @@ fn main() {
 }
 
 pub fn create_empty_list() -> List {
-    todo!()
+   List::Nil
 }
 
 pub fn create_non_empty_list() -> List {
-    todo!()
+    List::Cons(1, Box::new(List::Cons(2, Box::new(List::Cons(3, Box::new(List::Nil))))))
 }
 
 #[cfg(test)]
