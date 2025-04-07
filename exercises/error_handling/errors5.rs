@@ -22,14 +22,17 @@
 // Execute `rustlings hint errors5` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
+// Box<dyn Error> 表示可以包含任何实现了 Error trait 的类型
+// 这个练习需要修改 main() 函数的返回类型，使其能同时处理两种不同的错误类型：
 
+// ParseIntError（来自 "42".parse() 的字符串解析错误）
+// CreationError（来自 PositiveNonzeroInteger::new() 的自定义错误）
 use std::error;
 use std::fmt;
 use std::num::ParseIntError;
 
 // TODO: update the return type of `main()` to make this compile.
-fn main() -> Result<(), Box<dyn ???>> {
+fn main() -> Result<(), Box<dyn error::Error>> {
     let pretend_user_input = "42";
     let x: i64 = pretend_user_input.parse()?;
     println!("output={:?}", PositiveNonzeroInteger::new(x)?);

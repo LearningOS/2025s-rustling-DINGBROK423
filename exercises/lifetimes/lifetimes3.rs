@@ -3,13 +3,12 @@
 // Lifetimes are also needed when structs hold references.
 //
 // Execute `rustlings hint lifetimes3` or use the `hint` watch subcommand for a
-// hint.
-
-// I AM NOT DONE
-
-struct Book {
-    author: &str,
-    title: &str,
+// hint
+//因为 Rust 不知道 &str 会活多久，需要你告诉它：这些引用在结构体中该怎么活着。
+struct Book<'a> {
+    
+    author: &'a str,
+    title: &'a str,
 }
 
 fn main() {
