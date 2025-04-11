@@ -3,7 +3,7 @@
 // Execute `rustlings hint threads3` or use the `hint` watch subcommand for a
 // hint.
 
-
+// I AM NOT DONE
 
 use std::sync::mpsc;
 use std::sync::Arc;
@@ -25,7 +25,7 @@ impl Queue {
         }
     }
 }
-// 误 E0382 表示 tx（mpsc::Sender<u32> 类型）被移动后再次使用。Sender 是一个所有权类型（不实现 Copy），因此在第一次移动后，无法在另一个地方再次使用。
+
 fn send_tx(q: Queue, tx: mpsc::Sender<u32>) -> () {
     let qc = Arc::new(q);
     let qc1 = Arc::clone(&qc);

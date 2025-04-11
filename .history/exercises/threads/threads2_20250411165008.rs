@@ -18,7 +18,7 @@ struct JobStatus {
 }
 
 fn main() {
-    let status = Arc::new(Mutex::new(JobStatus { jobs_completed: 0 }));
+    let status = Arc::new(JobStatus { jobs_completed: 0 });
 //     Arc（Atomic Reference Counted）是一个线程安全的引用计数智能指针，允许多个线程共享所有权。
 // 这里使用 Arc 包装 JobStatus，使得多个线程可以安全地共享 status。
     let mut handles = vec![];
