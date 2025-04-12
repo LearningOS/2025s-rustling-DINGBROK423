@@ -10,8 +10,6 @@ fn main() {
     // for Some(x) in option {
     //     res += x;
     // }
-    if let Some(x) = option {
-        res += x;
-    }
+    
     println!("{}", res);
 }
