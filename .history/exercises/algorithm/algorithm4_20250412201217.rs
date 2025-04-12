@@ -73,10 +73,10 @@ where
     //         },
     //     }
     // }
-    fn search(&self, value: T) -> bool {
+    fn search(&self, value: &T) -> bool {
         match &self.root {
             None => false,
-            Some(node) => node.search(value),
+            Some(node) => node.search(&value),
         }
     }
 }
@@ -102,23 +102,6 @@ where
             },
             Ordering::Equal => {
                 // 值已存在，不做操作（根据测试要求）
-            },
-        }
-    }
-    fn search(&self, value: T) -> bool {
-        match value.cmp(&self.value) {
-            Ordering::Equal => true,
-            Ordering::Less => {
-                match &self.left {
-                    None => false,
-                    Some(node) => node.search(value),
-                }
-            },
-            Ordering::Greater => {
-                match &self.right {
-                    None => false,
-                    Some(node) => node.search(value),
-                }
             },
         }
     }

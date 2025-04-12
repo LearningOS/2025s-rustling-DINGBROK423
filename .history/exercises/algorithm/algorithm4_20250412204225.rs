@@ -73,10 +73,10 @@ where
     //         },
     //     }
     // }
-    fn search(&self, value: T) -> bool {
+    fn search(&self, value: &T) -> bool {
         match &self.root {
             None => false,
-            Some(node) => node.search(value),
+            Some(node) => node.search(&value),
         }
     }
 }
@@ -105,7 +105,7 @@ where
             },
         }
     }
-    fn search(&self, value: T) -> bool {
+    fn search(&self, value: &T) -> bool {
         match value.cmp(&self.value) {
             Ordering::Equal => true,
             Ordering::Less => {

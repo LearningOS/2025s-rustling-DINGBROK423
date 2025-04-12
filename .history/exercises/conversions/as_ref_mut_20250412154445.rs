@@ -14,7 +14,7 @@
 // 代码复用：避免为不同类型编写重复逻辑
 // 零成本抽象：转换通常是零成本的，不会带来运行时开销
 // 清晰的代码意图：函数签名明确表示它只需要引用而不需要所有权
-//Rust 编译错误解析：AsRef 和 AsMut Trait 约束
+
 // Obtain the number of bytes (not characters) in the given argument.
 // TODO: Add the AsRef trait appropriately as a trait bound.
 fn byte_counter<T:AsRef<str>>(arg: T) -> usize {
@@ -29,7 +29,7 @@ fn char_counter<T:AsRef<str>>(arg: T) -> usize {
 
 // Squares a number using as_mut().
 // TODO: Add the appropriate trait bound.
-fn num_sq<T:AsMut<u32>>(arg: &mut T) {
+fn num_sq<T:AsRef<str>>(arg: &mut T) {
     // TODO: Implement the function body.
     let num = arg.as_mut();
     *num *= *num;

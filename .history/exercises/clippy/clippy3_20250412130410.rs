@@ -5,7 +5,7 @@
 // Execute `rustlings hint clippy3` or use the `hint` watch subcommand for a hint.
 
 
-// mem 是 Rust 标准库中的一个重要模块，全名为 std::mem，专门提供与内存操作相关的实用函数。这个模块帮助开发者处理底层内存管理和操作
+
 #[allow(unused_variables, unused_assignments)]
 fn main() {
     let my_option: Option<()> = None;

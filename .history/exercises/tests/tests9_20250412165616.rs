@@ -27,12 +27,13 @@
 //
 // You should NOT modify any existing code except for adding two lines of attributes.
 
+// I AM NOT DONE
 
 extern "Rust" {
     fn my_demo_function(a: u32) -> u32;
     #[link_name = "my_demo_function"]
     fn my_demo_function_alias(a: u32) -> u32;
-    // 符号导出：
+    符号导出：
 
 // #[no_mangle] 防止 Rust 对 my_demo_function 进行名称修饰，使其保留原始名称
 // pub 关键字让函数在模块外可见
