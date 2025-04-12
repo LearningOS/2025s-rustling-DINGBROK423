@@ -3,7 +3,7 @@
 // Execute `rustlings hint macros1` or use the `hint` watch subcommand for a
 // hint.
 
-//宏定义 要有！
+//
 
 macro_rules! my_macro {
     () => {

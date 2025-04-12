@@ -1,10 +1,11 @@
-// macros1.rs
+// macros2.rs
 //
-// Execute `rustlings hint macros1` or use the `hint` watch subcommand for a
+// Execute `rustlings hint macros2` or use the `hint` watch subcommand for a
 // hint.
 
-//宏定义 要有！
+// I AM NOT DONE
 
+//先定义
 macro_rules! my_macro {
     () => {
         println!("Check out my macro!");
@@ -14,3 +15,4 @@ macro_rules! my_macro {
 fn main() {
     my_macro!();
 }
+

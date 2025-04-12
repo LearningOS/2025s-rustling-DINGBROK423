@@ -2,7 +2,7 @@
 	single linked list merge
 	This problem requires you to merge two ordered singly linked lists into one ordered singly linked list
 */
-
+// I AM NOT DONE
 
 use std::fmt::{self, Display, Formatter};
 use std::ptr::NonNull;
@@ -69,54 +69,15 @@ impl<T> LinkedList<T> {
             },
         }
     }
-	pub fn merge(mut list_a: LinkedList<T>, mut list_b: LinkedList<T>) -> Self
-    where
-        T: Ord,
-    {
-        let mut merged_list = LinkedList::new();
-        
-        // 获取两个链表的起始节点
-        let mut current_a = list_a.start;
-        let mut current_b = list_b.start;
-        
-        // 两个链表都不为空时，比较并合并
-        while current_a.is_some() && current_b.is_some() {
-            let node_a = unsafe { current_a.unwrap().as_ptr() };
-            let node_b = unsafe { current_b.unwrap().as_ptr() };
-            
-            // 比较两个节点的值，将较小的添加到结果链表
-            if unsafe { (*node_a).val <= (*node_b).val } {
-                // 添加A的节点并移动A的指针
-                merged_list.add(unsafe { std::ptr::read(&(*node_a).val) });
-                current_a = unsafe { (*node_a).next };
-            } else {
-                // 添加B的节点并移动B的指针
-                merged_list.add(unsafe { std::ptr::read(&(*node_b).val) });
-                current_b = unsafe { (*node_b).next };
-            }
+	pub fn merge(list_a:LinkedList<T>,list_b:LinkedList<T>) -> Self
+	{
+		//TODO
+		Self {
+            length: 0,
+            start: None,
+            end: None,
         }
-        
-        // 处理剩余的节点
-        while let Some(ptr) = current_a {
-            let node = unsafe { ptr.as_ptr() };
-            merged_list.add(unsafe { std::ptr::read(&(*node).val) });
-            current_a = unsafe { (*node).next };
-        }
-        
-        while let Some(ptr) = current_b {
-            let node = unsafe { ptr.as_ptr() };
-            merged_list.add(unsafe { std::ptr::read(&(*node).val) });
-            current_b = unsafe { (*node).next };
-        }
-        
-        // 防止双重释放
-        list_a.start = None;
-        list_a.end = None;
-        list_b.start = None;
-        list_b.end = None;
-        
-        merged_list
-    }
+	}
 }
 
 impl<T> Display for LinkedList<T>
