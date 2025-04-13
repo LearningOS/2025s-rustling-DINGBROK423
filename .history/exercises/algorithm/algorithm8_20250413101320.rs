@@ -52,13 +52,13 @@ impl<T> Default for Queue<T> {
 }
 
 // 修改为符合 Rust 命名规范的名称
-pub struct myStack<T>
+pub struct MyStack<T>
 {
     q1: Queue<T>,
     q2: Queue<T>
 }
 
-impl<T> myStack<T> {
+impl<T> MyStack<T> {
     pub fn new() -> Self {
         Self {
             q1: Queue::<T>::new(),

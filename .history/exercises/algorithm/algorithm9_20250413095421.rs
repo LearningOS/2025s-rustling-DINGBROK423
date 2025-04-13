@@ -37,23 +37,7 @@ where
     }
 
     pub fn add(&mut self, value: T) {
-        // 添加元素到数组末尾
-        self.items.push(value);
-        self.count += 1;
-
-        // "上浮"操作 - 将新添加的元素调整到正确位置
-        let mut idx = self.count;
-        while idx > 1 {
-            let parent = self.parent_idx(idx);
-            // 如果不需要交换(即满足堆属性)，则退出循环
-            if !(self.comparator)(&self.items[idx], &self.items[parent]) {
-                break;
-            }
-
-            // 交换当前元素与父元素
-            self.items.swap(idx, parent);
-            idx = parent;
-        }
+        //TODO
     }
 
     fn parent_idx(&self, idx: usize) -> usize {
@@ -73,17 +57,8 @@ where
     }
 
     fn smallest_child_idx(&self, idx: usize) -> usize {
-        // 获取左右子节点索引
-        let left = self.left_child_idx(idx);
-        let right = self.right_child_idx(idx);
-
-        // 如果右子节点存在且比左子节点更优先(根据比较器)
-        if right <= self.count && (self.comparator)(&self.items[right], &self.items[left]) {
-            return right;
-        }
-
-        // 否则返回左子节点
-        left
+        //TODO
+		0
     }
 }
 
@@ -109,30 +84,8 @@ where
     type Item = T;
 
     fn next(&mut self) -> Option<T> {
-        if self.is_empty() {
-            return None;
-        }
-    
-        // 交换堆顶元素和最后一个元素
-        self.items.swap(1, self.count);
-        // 移除原堆顶元素（现在在最后一位）
-        let return_item = self.items.pop().unwrap();
-        self.count -= 1;
-    
-        // 下沉调整堆
-        if self.count > 0 {
-            let mut idx = 1;
-            while self.children_present(idx) {
-                let child = self.smallest_child_idx(idx);
-                if (self.comparator)(&self.items[idx], &self.items[child]) {
-                    break;
-                }
-                self.items.swap(idx, child);
-                idx = child;
-            }
-        }
-    
-        Some(return_item)
+        //TODO
+		None
     }
 }
 

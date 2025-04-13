@@ -37,20 +37,20 @@ where
     }
 
     pub fn add(&mut self, value: T) {
-        // æ·»åŠ å…ƒç´ åˆ°æ•°ç»„æœ«å°¾
+        // Ìí¼ÓÔªËØµ½Êı×éÄ©Î²
         self.items.push(value);
         self.count += 1;
-
-        // "ä¸Šæµ®"æ“ä½œ - å°†æ–°æ·»åŠ çš„å…ƒç´ è°ƒæ•´åˆ°æ­£ç¡®ä½ç½®
+        
+        // "ÉÏ¸¡"²Ù×÷ - ½«ĞÂÌí¼ÓµÄÔªËØµ÷Õûµ½ÕıÈ·Î»ÖÃ
         let mut idx = self.count;
         while idx > 1 {
             let parent = self.parent_idx(idx);
-            // å¦‚æœä¸éœ€è¦äº¤æ¢(å³æ»¡è¶³å †å±æ€§)ï¼Œåˆ™é€€å‡ºå¾ªç¯
+            // Èç¹û²»ĞèÒª½»»»(¼´Âú×ã¶ÑÊôĞÔ)£¬ÔòÍË³öÑ­»·
             if !(self.comparator)(&self.items[idx], &self.items[parent]) {
                 break;
             }
-
-            // äº¤æ¢å½“å‰å…ƒç´ ä¸çˆ¶å…ƒç´ 
+            
+            // ½»»»µ±Ç°ÔªËØÓë¸¸ÔªËØ
             self.items.swap(idx, parent);
             idx = parent;
         }
@@ -73,17 +73,8 @@ where
     }
 
     fn smallest_child_idx(&self, idx: usize) -> usize {
-        // è·å–å·¦å³å­èŠ‚ç‚¹ç´¢å¼•
-        let left = self.left_child_idx(idx);
-        let right = self.right_child_idx(idx);
-
-        // å¦‚æœå³å­èŠ‚ç‚¹å­˜åœ¨ä¸”æ¯”å·¦å­èŠ‚ç‚¹æ›´ä¼˜å…ˆ(æ ¹æ®æ¯”è¾ƒå™¨)
-        if right <= self.count && (self.comparator)(&self.items[right], &self.items[left]) {
-            return right;
-        }
-
-        // å¦åˆ™è¿”å›å·¦å­èŠ‚ç‚¹
-        left
+        //TODO
+		0
     }
 }
 
@@ -109,30 +100,8 @@ where
     type Item = T;
 
     fn next(&mut self) -> Option<T> {
-        if self.is_empty() {
-            return None;
-        }
-    
-        // äº¤æ¢å †é¡¶å…ƒç´ å’Œæœ€åä¸€ä¸ªå…ƒç´ 
-        self.items.swap(1, self.count);
-        // ç§»é™¤åŸå †é¡¶å…ƒç´ ï¼ˆç°åœ¨åœ¨æœ€åä¸€ä½ï¼‰
-        let return_item = self.items.pop().unwrap();
-        self.count -= 1;
-    
-        // ä¸‹æ²‰è°ƒæ•´å †
-        if self.count > 0 {
-            let mut idx = 1;
-            while self.children_present(idx) {
-                let child = self.smallest_child_idx(idx);
-                if (self.comparator)(&self.items[idx], &self.items[child]) {
-                    break;
-                }
-                self.items.swap(idx, child);
-                idx = child;
-            }
-        }
-    
-        Some(return_item)
+        //TODO
+		None
     }
 }
 

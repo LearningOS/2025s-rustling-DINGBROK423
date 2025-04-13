@@ -112,26 +112,31 @@ where
         if self.is_empty() {
             return None;
         }
-    
-        // 交换堆顶元素和最后一个元素
-        self.items.swap(1, self.count);
-        // 移除原堆顶元素（现在在最后一位）
-        let return_item = self.items.pop().unwrap();
+
+        // 保存堆顶元素用于返回
+        let return_item = std::mem::replace(&mut self.items[1], self.items[self.count].clone());
+
+        // 移除末尾元素
+        self.items.pop();
         self.count -= 1;
-    
-        // 下沉调整堆
+
+        // 如果堆不为空，执行"下沉"操作调整堆
         if self.count > 0 {
             let mut idx = 1;
             while self.children_present(idx) {
                 let child = self.smallest_child_idx(idx);
+
+                // 如果当前节点已满足堆属性，退出循环
                 if (self.comparator)(&self.items[idx], &self.items[child]) {
                     break;
                 }
+
+                // 交换当前节点与子节点
                 self.items.swap(idx, child);
                 idx = child;
             }
         }
-    
+
         Some(return_item)
     }
 }

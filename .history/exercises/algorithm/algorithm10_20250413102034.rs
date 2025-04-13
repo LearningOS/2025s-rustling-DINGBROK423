@@ -29,28 +29,28 @@ impl Graph for UndirectedGraph {
         &self.adjacency_table
     }
     fn add_edge(&mut self, edge: (&str, &str, i32)) {
-        let (from, to, weight) = edge;
+        let (node1, node2, weight) = edge;
         
         // 确保两个节点都存在
-        if !self.contains(from) {
-            self.add_node(from);
+        if !self.contains(node1) {
+            self.add_node(node1);
         }
-        if !self.contains(to) {
-            self.add_node(to);
+        if !self.contains(node2) {
+            self.add_node(node2);
         }
         
         // 添加双向边
-        // from -> to
+        // node1 -> node2
         self.adjacency_table_mutable()
-            .get_mut(from)
+            .get_mut(node1)
             .unwrap()
-            .push((to.to_string(), weight));
+            .push((node2.to_string(), weight));
         
-        // to -> from（双向边）
+        // node2 -> node1
         self.adjacency_table_mutable()
-            .get_mut(to)
+            .get_mut(node2)
             .unwrap()
-            .push((from.to_string(), weight));
+            .push((node1.to_string(), weight));
     }
 }
 pub trait Graph {
@@ -58,31 +58,17 @@ pub trait Graph {
     fn adjacency_table_mutable(&mut self) -> &mut HashMap<String, Vec<(String, i32)>>;
     fn adjacency_table(&self) -> &HashMap<String, Vec<(String, i32)>>;
     fn add_node(&mut self, node: &str) -> bool {
-        // 如果节点已存在，返回false
         if self.contains(node) {
+            // 节点已存在，返回false表示未添加新节点
             return false;
         }
         
-        // 添加新节点，初始化为空邻接列表
+        // 插入新节点，初始化为空邻接列表
         self.adjacency_table_mutable().insert(node.to_string(), Vec::new());
         true
     }
     fn add_edge(&mut self, edge: (&str, &str, i32)) {
-        let (from, to, weight) = edge;
-        
-        // 确保两个节点都存在
-        if !self.contains(from) {
-            self.add_node(from);
-        }
-        if !self.contains(to) {
-            self.add_node(to);
-        }
-        
-        // 添加边
-        self.adjacency_table_mutable()
-            .get_mut(from)
-            .unwrap()
-            .push((to.to_string(), weight));
+        //TODO
     }
     fn contains(&self, node: &str) -> bool {
         self.adjacency_table().get(node).is_some()
